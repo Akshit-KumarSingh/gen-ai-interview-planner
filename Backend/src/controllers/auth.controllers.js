@@ -2,6 +2,13 @@ const userModel = require("../models/user.models");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const tokenBlacklistModel = require("../models/blacklist.model");
+
+const isProd = process.env.NODE_ENV === "production";
+const cookieOptions = {
+  httpOnly: true,
+  secure: isProd,
+  sameSite: isProd ? "none" : "lax",
+};
 /**
  * @name registerUserController
  * @description Register a new user
@@ -50,7 +57,7 @@ async function registerUserController(req, res) {
     );
 
     // Store token in cookie
-    res.cookie("token", token);
+    res.cookie("token", token, cookieOptions);
 
     return res.status(201).json({
       message: "User registered successfully",
@@ -112,7 +119,7 @@ async function loginUserController(req, res) {
     );
 
     // Store token in cookie
-    res.cookie("token", token);
+    res.cookie("token", token, cookieOptions);
 
     return res.status(200).json({
       message: "User logged in successfully",
