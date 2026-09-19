@@ -1,19 +1,40 @@
-.button {
-  border: none;
-  outline: none;
-  padding-inline: 1.5rem;
-  padding-block: 0.75rem;
-  border-radius: 1rem;
-  cursor: pointer;
+@use "./theme" as *;
 
-  transition: all 0.3s ease-in-out;
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  border: none;
+  padding-inline: 1.5rem;
+  padding-block: 0.8rem;
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: $font-stack;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition:
+    background-color 0.2s,
+    transform 0.1s;
 
   &.primary-button {
-    background-color: rgb(193, 58, 58);
-    color: white;
+    background-color: $forest;
+    color: #fff;
+
+    &::after {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: $lime;
+    }
+
+    &:hover {
+      background-color: $deep-teal;
+    }
   }
 
   &:active {
-    transform: scale(0.9);
+    transform: scale(0.97);
   }
 }

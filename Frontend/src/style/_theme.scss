@@ -1,0 +1,59 @@
+// ── Theme: green palette ─────────────────────────────────────
+// Change a colour here and it updates across the whole app.
+
+$forest: #044b39; // main dark green (headings, buttons)
+$emerald: #1ea97b; // medium green (links, success)
+$mint: #c8efc1; // soft light green (highlights)
+$moss: #264b04; // deep olive
+$lime: #72c613; // bright green accent
+$lime-soft: #cbf39d; // pale lime
+$deep-teal: #053438; // darkest shade (side menu)
+$blue: #2180e6; // info colour
+$aqua: #bdf0ec; // pale aqua
+
+$bg-page: #f3f6f1;
+$bg-card: #ffffff;
+$bg-panel: #f7faf5;
+$bg-input: #f3f7f1;
+$border-color: #dde7d8;
+$text-primary: #0f2a22;
+$text-muted: #5d7068;
+
+$accent: $forest;
+$accent-bright: $lime;
+
+$severity-high: #d4543a;
+$severity-medium: #d99a14;
+$severity-low: $emerald;
+
+$radius-lg: 1.25rem;
+$radius-md: 0.75rem;
+$radius-sm: 0.5rem;
+$shadow-card:
+  0 1px 2px rgba(4, 75, 57, 0.06),
+  0 12px 32px -12px rgba(4, 75, 57, 0.18);
+
+$font-stack:
+  "Inter Tight",
+  system-ui,
+  -apple-system,
+  "Segoe UI",
+  Roboto,
+  sans-serif;
+
+@mixin glow-background {
+  background-color: $bg-page;
+  background-image:
+    radial-gradient(
+      60rem 28rem at 50% -8rem,
+      rgba($lime-soft, 0.85),
+      transparent 70%
+    ),
+    radial-gradient(40rem 22rem at 85% 0, rgba(#f6ef9a, 0.55), transparent 70%);
+  background-repeat: no-repeat;
+}
+
+@mixin focus-ring {
+  outline: 2px solid $lime;
+  outline-offset: 2px;
+}
