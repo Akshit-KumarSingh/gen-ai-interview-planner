@@ -80,8 +80,12 @@ async function getAllInterviewReportsController(req, res) {
 async function generateResumePdfController(req, res) {
   const { interviewReportId } = req.params;
 
-  const interviewReport =
-    await interviewReportModel.findById(interviewReportId);
+  // Scope the lookup to the logged-in user. Fetching by _id alone would let
+  // any authenticated user download another user's resume by its id.
+  const interviewReport = await interviewReportModel.findOne({
+    _id: interviewReportId,
+    user: req.user.id,
+  });
 
   if (!interviewReport) {
     return res.status(404).json({
